@@ -1,10 +1,10 @@
 export default function Login() {
   return (
-    <div className="w-full h-full grid place-items-center">
+    <div className="w-full h-full grid place-items-center font-poppins">
       <div className="w-[350px] h-[500px] flex flex-col items-center justify-evenly">
         <section className="w-full flex flex-col items-center">
           <div>{/* icon */}</div>
-          <div className="font-bold text-[35px]">Bem-vindo!</div>
+          <div className="font-inter font-extrabold text-[40px]">Bem-vindo!</div>
           <div className="font-normal text-[14px] text-gray-700 text-center">
             Faça login para acessar a plataforma e ter acesso ao estoque.
           </div>
