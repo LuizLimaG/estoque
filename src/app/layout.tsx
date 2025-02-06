@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Poppins } from "next/font/google"
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 
@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 };
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400','500','600','700','800','900'],
+  subsets: ["latin"],
+  weight: ["400","500","600","700","800","900"],
   variable: "--font-poppins",
 })
 
 const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400','500','600','700','800','900'],
+  subsets: ["latin"],
+  weight: ["400","500","600","700","800","900"],
   variable: "--font-inter",
 })
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`antialiased h-screen bg-amber-50 ${poppins.variable} ${inter.variable}`}
+        className={`antialiased h-screen ${poppins.variable} ${inter.variable}`}
       >
         <NextTopLoader height={5} color="#FFB300" showSpinner={false} ></NextTopLoader>
         {children}
