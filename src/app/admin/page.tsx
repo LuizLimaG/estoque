@@ -1,14 +1,9 @@
-import { AppSidebar } from "@/components/sidebar/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Gear } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
 export default function AdminPage() {
   return (
-    <SidebarProvider>
-      <AppSidebar />
       <main className="flex w-full">
-        <SidebarTrigger />
         <div className="w-full text-white p-5">
           
             <section className="w-full flex items-center justify-between px-10">
@@ -25,6 +20,5 @@ export default function AdminPage() {
 
         </div>
       </main>
-    </SidebarProvider>
   );
 }
