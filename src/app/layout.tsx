@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from 'next/font/google'
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`antialiased h-screen bg-amber-50 ${poppins.variable} ${inter.variable}`}
       >
+        <NextTopLoader height={5} color="#FFB300" showSpinner={false} ></NextTopLoader>
         {children}
       </body>
     </html>
