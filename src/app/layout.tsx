@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google"
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import Sidebar, { SidebarItem } from "@/components/sidebar";
+import { BarChart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,7 +32,11 @@ export default function RootLayout({
       <body
         className={`antialiased h-screen ${poppins.variable} ${inter.variable}`}
       >
+
         <NextTopLoader height={5} color="#FFB300" showSpinner={false} ></NextTopLoader>
+        <Sidebar>
+          <SidebarItem icon={<BarChart />} text={"Fodase da silva"} active alert={false} link={"/stock"} />
+          </Sidebar >
         {children}
       </body>
     </html>
