@@ -1,5 +1,6 @@
 import { Content } from "@/components/content";
 import { SectionHeader } from "@/components/sectionHeader";
+import { Table } from "@/components/table";
 import { StackPlus } from "@phosphor-icons/react/dist/ssr";
 export default function Stock() {
   return (
@@ -13,8 +14,10 @@ export default function Stock() {
         }
       />
 
-      <section className="bg-blue-300 w-full h-full">
-        <div className="bg-red-300 w-full h-full rounded-md"></div>
+      <section className="w-full h-full">
+        <div className="w-full h-full rounded-md">
+          <Table></Table>
+        </div>
       </section>
     </Content>
   );

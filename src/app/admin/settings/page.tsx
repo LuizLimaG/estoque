@@ -4,7 +4,6 @@ export default function AdminSettings() {
   return (
       <main className="flex w-full">
         <div className="bg-black w-full text-white">
-          
             <section>
                 <aside></aside>
                 <aside>
@@ -13,7 +12,6 @@ export default function AdminSettings() {
                     </Link>
                 </aside>
             </section>
-          
         </div>
       </main>
   );
