@@ -14,7 +14,7 @@ interface SidebarContextType {
 const SidebarContext = createContext<SidebarContextType>({ expanded: false });
 
 export default function Sidebar(props: SidebarProps) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <aside className="z-50 h-screen hidden min-h-screens shadow-2xl font-poppins fixed md:flex rounded-r-full">
