@@ -3,7 +3,7 @@ import { Inter, Poppins } from "next/font/google"
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Sidebar, { SidebarItem } from "@/components/sidebar";
-import { BarChart } from "lucide-react";
+import { BarChart, CircleUserRound, HouseIcon, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -35,7 +35,10 @@ export default function RootLayout({
 
         <NextTopLoader height={5} color="#FFB300" showSpinner={false} ></NextTopLoader>
         <Sidebar>
-          <SidebarItem icon={<BarChart />} text={"Fodase da silva"} active alert={false} link={"/stock"} />
+          <SidebarItem icon={<HouseIcon />} text={"Home"} active alert={false} link={"/"} />
+          <SidebarItem icon={<Package />} text={"Estoque"} alert={false} link={"/stock"} />
+          <hr />
+          <SidebarItem icon={<CircleUserRound />} text={"Perfil"} alert={false} link={"/profile"} />
           </Sidebar >
         {children}
       </body>
