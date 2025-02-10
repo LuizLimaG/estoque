@@ -3,13 +3,14 @@ import { TableColumnHeader } from "./tableColumnHeader"
 export function TableHeaderLine() {
 
     const items = [
-        "Sei la",
-        "Sei la",
-        "Sei la",
-        "Sei la",
-        "Sei la",
-        "Sei la",
-        "Sei la",
+        "Produto",
+        "Categoria",
+        "Quantidade",
+        "Medida",
+        "Estoque Mínimo",
+        "Estoque Máximo",
+        "Compras",
+        "Data da Contagem"
     ]
     
     return(
