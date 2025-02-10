@@ -14,7 +14,6 @@ const addProduct = async (formData: any) => {
         estoqueMaximo: formData.get('productMaximumStock'),
         dataContagem: formData.get('productCountDate')
     })
-    redirect('/stock')
 }
 
 export {

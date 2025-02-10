@@ -1,29 +1,40 @@
-import { collection, getDocs } from "firebase/firestore";
-import { TableColumnContent } from "./tableColumnContent";
-import { db } from "@/data/firebase/firebaseConfig";
+"use client"
+import { collection, onSnapshot, query } from "firebase/firestore"
+import { TableColumnContent } from "./tableColumnContent"
+import { db } from "@/data/firebase/firebaseConfig"
+import { useEffect, useState } from "react"
 
 interface Product {
-  id: string;
-  nome: string;
-  categoria: string;
-  quantidade: number;
-  medida: string;
-  estoqueMinimo: number;
-  estoqueMaximo: number;
-  dataContagem: string;
+  id: string
+  nome: string
+  categoria: string
+  quantidade: number
+  medida: string
+  estoqueMinimo: number
+  estoqueMaximo: number
+  dataContagem: string
 }
 
-export async function TableLine() {
-  const collectionRef = collection(db, "Produtos");
-  const stockCollectionSnapshot = await getDocs(collectionRef);
-  const productsList = stockCollectionSnapshot.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  })) as Product[];
+export function TableLine() {
+  const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    const collectionRef = collection(db, "Produtos")
+    const q = query(collectionRef)
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const productsList = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      })) as Product[]
+      setProducts(productsList)
+    })
+    return () => unsubscribe()
+  }, [])
 
   return (
     <>
-      {productsList.map((product) => (
+      {products.map((product) => (
         <tr key={product.id} className="even:bg-gray-50">
           <TableColumnContent content={product.nome} />
           <TableColumnContent content={product.categoria} />
@@ -40,5 +51,5 @@ export async function TableLine() {
         </tr>
       ))}
     </>
-  );
+  )
 }

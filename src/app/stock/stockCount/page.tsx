@@ -65,7 +65,7 @@ export default function StockCount() {
                 placeholder="Compras"
               />
               <input
-                type="text"
+                type="date"
                 name="productCountDate"
                 className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
                 placeholder="Data da Contagem"
