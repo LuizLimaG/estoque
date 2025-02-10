@@ -7,12 +7,15 @@ export function TableHeaderLine() {
         "Sei la",
         "Sei la",
         "Sei la",
+        "Sei la",
+        "Sei la",
+        "Sei la",
     ]
     
     return(
         <tr>
-            {items.map(item => (
-                <TableColumnHeader content={item} />
+            {items.map((item, index) => (
+                <TableColumnHeader key={index} content={item} />
             ))}
         </tr>
     )

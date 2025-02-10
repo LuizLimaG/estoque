@@ -14,8 +14,8 @@ export default function Stock() {
         }
       />
 
-      <section className="w-full h-full">
-        <div className="w-full h-full rounded-md">
+      <section className="w-full h-full bg-white rounded-lg overflow-hidden">
+        <div className="w-full h-full">
           <Table></Table>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { Inter, Poppins } from "next/font/google"
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Sidebar, { SidebarItem } from "@/components/sidebar";
-import { BarChart, CircleUserRound, HouseIcon, Package } from "lucide-react";
+import { House, Package, UserCircle } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,12 +33,12 @@ export default function RootLayout({
         className={`antialiased h-screen ${poppins.variable} ${inter.variable}`}
       >
 
-        <NextTopLoader height={5} color="#FFB300" showSpinner={false} ></NextTopLoader>
+        <NextTopLoader height={5} color="#1E293B" showSpinner={false} ></NextTopLoader>
         <Sidebar>
-          <SidebarItem icon={<HouseIcon />} text={"Home"} active alert={false} link={"/"} />
-          <SidebarItem icon={<Package />} text={"Estoque"} alert={false} link={"/stock"} />
+          <SidebarItem icon={<House size={24} />} text={"Home"} active alert={false} link={"/"} />
+          <SidebarItem icon={<Package size={24} />} text={"Estoque"} alert={false} link={"/stock"} />
           <hr />
-          <SidebarItem icon={<CircleUserRound />} text={"Perfil"} alert={false} link={"/profile"} />
+          <SidebarItem icon={<UserCircle size={24} />} text={"Perfil"} alert={false} link={"/profile"} />
           </Sidebar >
         {children}
       </body>

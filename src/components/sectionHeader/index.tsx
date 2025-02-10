@@ -10,29 +10,29 @@ export function SectionHeader({
   icon,
 }: {
   pageTitle: string;
-  primaryButton: React.ReactNode;
+  primaryButton?: React.ReactNode;
   secundaryButton?: React.ReactNode;
   primaryLink: string;
   link?: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 }) {
   return (
-    <section className="w-full flex items-center justify-between px-4">
+    <section className="w-full flex items-center justify-between p-4 rounded-lg bg-white">
       <div>
-        <h1 className="font-black text-[30px] text-amber-600">{pageTitle}</h1>
+        <h1 className="font-black text-[30px] text-slate-800">{pageTitle}</h1>
       </div>
       <div className="flex items-center justify-center gap-3">
         {link && secundaryButton && (
           <Link
             href={link}
-            className="text-black font-medium cursor-pointer hover:underline hover:text-amber-500 transition-all duration-200"
+            className="text-slate-800 font-medium cursor-pointer hover:underline hover:text-slate-800 transition-all duration-200"
           >
             {secundaryButton}
           </Link>
         )}
         <Link
           href={primaryLink}
-          className="flex items-center justify-center gap-2 text-white bg-amber-600 px-2 py-1 rounded-lg hover:bg-amber-500 transition-all duration-200"
+          className="flex items-center justify-center gap-2 text-white bg-slate-800 px-2 py-1 rounded-lg hover:bg-slate-700 transition-all duration-200"
         >
           {icon}
           {primaryButton}

@@ -1,7 +1,6 @@
 import { Content } from "@/components/content";
 import { SectionHeader } from "@/components/sectionHeader";
 import { Gear } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
 
 export default function StockCount() {
   return (
@@ -12,13 +11,20 @@ export default function StockCount() {
         primaryButton={"Definição da Contagem"}
         primaryLink={"/stock/stockCount/stockCountSettings"}
         link={"/stock"}
-        icon={
-          <Gear size={20} weight="fill"/>
-        }
+        icon={<Gear size={20} weight="fill" />}
       />
 
-      <section className="bg-blue-300 w-full h-full">
-        <div className="bg-red-300 w-full h-full rounded-md"></div>
+      <section className="w-full h-full">
+        <div className="w-full h-full p-4">
+          <div>
+            <input
+              type="text"
+              name=""
+              className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
+              placeholder="Aparece Porra"
+            />
+          </div>
+        </div>
       </section>
     </Content>
   );
