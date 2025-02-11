@@ -1,66 +1,65 @@
 import { addProduct } from "@/data/firebase/firebaseController";
+import { Input } from "../input";
 
 export function StockCountForm() {
-    return (
-        <form 
-            className="w-3/6 flex flex-col items-center gap-2"
-            action={addProduct}
-          >
-            <div className="w-full flex flex-wrap justify-center gap-2">
-              <input
-                type="text"
-                name="productName"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Produto"
-              />
-              <input
-                type="text"
-                name="productCategory"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Categoria"
-              />
-              <input
-                type="text"
-                name="productQuantity"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Quantidade"
-              />
-              <input
-                type="text"
-                name="productMeasure"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Medida"
-              />
-              <input
-                type="text"
-                name="productMinimumStock"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Estoque Mínimo"
-              />
-              <input
-                type="text"
-                name="productMaximumStock"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Estoque Máximo"
-              />
-              <input
-                type="text"
-                name="productShopping"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Compras"
-              />
-              <input
-                type="date"
-                name="productCountDate"
-                className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
-                placeholder="Data da Contagem"
-              />
-            </div>
-            <div>
-              <button className="text-black py-2 px-4 bg-white rounded-md">
-                Enviar
-              </button>
-            </div>
-          </form>
-    )
+  const inputItems = [
+    {
+      name: "productName",
+      type: "text",
+      placeholder: "Digite o produto:",
+    },
+    {
+      name: "productCategory",
+      type: "text",
+      placeholder: "Digite a categoria:",
+    },
+    {
+      name: "productQuantity",
+      type: "number",
+      placeholder: "Digite a quantidade:",
+    },
+    {
+      name: "productMeasure",
+      type: "text",
+      placeholder: "Digite a medida:",
+    },
+    {
+      name: "productMinimumStock",
+      type: "number",
+      placeholder: "Digite o estoque mínimo:",
+    },
+    {
+      name: "productMaximumStock",
+      type: "number",
+      placeholder: "Digite o estoque máximo:",
+    },
+    {
+      name: "productShopping",
+      type: "number",
+      placeholder: "Digite a quantidade de compras:",
+    },
+    {
+      name: "productCountDate",
+      type: "date",
+      placeholder: "Digite a data da contagem:",
+    },
+  ];
+
+  return (
+    <form
+      className="w-3/6 flex flex-col items-center gap-2 py-8"
+      action={addProduct}
+    >
+      <div className="w-full flex flex-wrap justify-center gap-2">
+        {inputItems.map((item, index) => (
+          <Input key={index} {...item} />
+        ))}
+      <div>
+        <button className="text-black py-2 px-4 bg-white rounded-md">
+          Enviar
+        </button>
+      </div>
+      </div>
+    </form>
+  );
 }
