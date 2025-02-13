@@ -12,7 +12,8 @@ export function Input({
       type={type}
       name={name}
       placeholder={placeholder}
-      className="border-2 border-gray-900 p-3 w-[300px] rounded-lg"
+      className="border-2 border-gray-200 shadow-inputShadow p-2 w-[400px] rounded-sm focus:border-slate-700 outline-none"
+      id={name}
     />
   );
 }

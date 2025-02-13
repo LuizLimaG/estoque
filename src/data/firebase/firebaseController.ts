@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 
 const addProduct = async (formData: any) => {
     const collectionRef = collection(db, 'Produtos')
-    const docRef = await addDoc(collectionRef, {
+    await addDoc(collectionRef, {
         nome: formData.get('productName'),
         categoria: formData.get('productCategory'),
         quantidade: formData.get('productQuantity'),
@@ -16,6 +16,14 @@ const addProduct = async (formData: any) => {
     })
 }
 
+const addCategory = async (formData: any) => {
+    const collectionRef = collection(db, 'ConfiguracoesProdutos')
+    await addDoc(collectionRef, {
+        categoria: formData.get('registerCategory')
+    })
+}
+
 export {
-    addProduct
+    addProduct,
+    addCategory
 }

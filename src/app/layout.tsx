@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`antialiased h-screen ${poppins.variable} ${inter.variable}`}
+        className={`antialiased h-screen ${poppins.variable} ${inter.variable}  bg-gray-200`}
       >
 
         <NextTopLoader height={5} color="#1E293B" showSpinner={false} ></NextTopLoader>

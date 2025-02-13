@@ -1,4 +1,5 @@
 import { Content } from "@/components/content";
+import { RegisterCategory } from "@/components/forms/registerCategory";
 import { StockCountForm } from "@/components/forms/stockCount";
 import { SectionContent } from "@/components/sectionContent";
 import { SectionHeader } from "@/components/sectionHeader";
@@ -21,7 +22,7 @@ export default function StockCount() {
       </SectionContent>
 
       <SectionContent title="Categoria">
-        <StockCountForm />
+        <RegisterCategory />
       </SectionContent>
     </Content>
   );

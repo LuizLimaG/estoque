@@ -2,6 +2,7 @@ import { Content } from "@/components/content";
 import { SectionHeader } from "@/components/sectionHeader";
 import { Table } from "@/components/table";
 import { StackPlus } from "@phosphor-icons/react/dist/ssr";
+
 export default function Stock() {
   return (
     <Content>
