@@ -1,29 +1,60 @@
-'use server'
-import { addDoc, collection } from "firebase/firestore"
-import { db } from "./firebaseConfig"
-import { redirect } from "next/navigation"
+"use server";
+import { addDoc, collection, doc } from "firebase/firestore";
+import { db } from "./firebaseConfig";
 
-const addProduct = async (formData: any) => {
-    const collectionRef = collection(db, 'Produtos')
-    await addDoc(collectionRef, {
-        nome: formData.get('productName'),
-        categoria: formData.get('productCategory'),
-        quantidade: formData.get('productQuantity'),
-        medida: formData.get('productMeasure'),
-        estoqueMinimo: formData.get('productMinimumStock'),
-        estoqueMaximo: formData.get('productMaximumStock'),
-        dataContagem: formData.get('productCountDate')
-    })
+interface ProductData {
+  nome: string;
+  categoria: string;
+  quantidade: string;
+  medida: string;
+  estoqueMinimo: string;
+  estoqueMaximo: string;
+  compras: string;
+  dataContagem: string;
 }
 
-const addCategory = async (formData: any) => {
-    const collectionRef = collection(db, 'ConfiguracoesProdutos')
-    await addDoc(collectionRef, {
-        categoria: formData.get('registerCategory')
-    })
-}
+const addProduct = async (productData: ProductData) => {
+  const requiredFields = {
+    nome: "Nome do produto",
+    categoria: "Categoria do produto",
+    quantidade: "Quantidade do produto",
+    medida: "Unidade de medida",
+    estoqueMinimo: "Estoque mínimo",
+    estoqueMaximo: "Estoque máximo",
+    compras: "Compras",
+    dataContagem: "Data da contagem",
+  }
 
-export {
-    addProduct,
-    addCategory
-}
+  for (const [key, label] of Object.entries(requiredFields)) {
+    if (!productData[key as keyof ProductData]?.trim()) {
+      throw new Error(`O campo ${label} é obrigatório`);
+    }
+  }
+
+  try {
+    const collectionRef = collection(db, "Produtos");
+    const docRef = await addDoc(collectionRef, productData);
+    return { success: true, id: docRef.id };
+  } catch (error) {
+    console.error("Erro ao adicionar o produto:", error);
+    throw new Error("Erro ao adicionar o produto.");
+  }
+};
+
+const addCategory = async (categoryName: string) => {
+  if (!categoryName?.trim()) {
+    throw new Error("Nome da categoria é obrigatório");
+  }
+
+  try {
+    const collectionRef = collection(db, "ConfiguracoesProdutos");
+    const docRef = await addDoc(collectionRef, { categoria: categoryName });
+    return { success: true, id: docRef.id };
+  } catch (error) {
+    console.error("Erro ao adicionar categoria:", error);
+    throw new Error("Falha ao adicionar categoria");
+  }
+};
+
+export { addProduct, addCategory };
+export type { ProductData };

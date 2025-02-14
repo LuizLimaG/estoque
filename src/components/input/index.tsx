@@ -2,18 +2,31 @@ export function Input({
   name,
   placeholder,
   type,
-}: {
+  inputValue,
+  onchange,
+  readonly,
+  classe,
+} : {
   name: string,
   placeholder: string,
   type: string,
+  inputValue?: string,
+  onchange?: any,
+  readonly?: boolean,
+  classe?: string
 }) {
   return (
     <input
       type={type}
       name={name}
       placeholder={placeholder}
-      className="border-2 border-gray-200 shadow-inputShadow p-2 w-[400px] rounded-sm focus:border-slate-700 outline-none"
+      className={`border-2 border-gray-200 shadow-inputShadow p-2 w-full rounded-sm focus:border-slate-700 outline-none ${classe}`}
       id={name}
+      autoComplete="off"
+      value={inputValue}
+      onChange={onchange}
+      readOnly={readonly}
+      required
     />
   );
 }

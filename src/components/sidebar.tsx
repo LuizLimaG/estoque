@@ -1,5 +1,5 @@
 "use client";
-import { SignIn, CaretLineLeft, CaretLineRight } from "@phosphor-icons/react/dist/ssr";
+import { SignIn, CaretLineLeft, CaretLineRight, UserCircle } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { useContext, createContext, useState, JSX } from "react";
 
@@ -73,9 +73,9 @@ export default function Sidebar(props: SidebarProps) {
             !expanded && "flex-col"
           }`}
         >
-          <Link className={`font-medium rounded-md flex items-center bg-gray-200 py-2 px-3 shadow-3D ease-in-out hover:opacity-95 duration-300  ${!expanded ? "" : "w-full"}`} href="/autenticacao">
-            <SignIn size={24} className="text-slate-800" />
-            <span className={`${!expanded ? "hidden" : "block"} text-slate-800 text-sm ml-3`}>Entrar/Cadastrar</span>
+          <Link className={`font-medium rounded-md flex items-center bg-gray-200 py-2 px-3 shadow-3D ease-in-out hover:opacity-95 duration-300  ${!expanded ? "" : "w-full"}`} href="/profile">
+            <UserCircle size={24} className="text-slate-800" />
+            <span className={`${!expanded ? "hidden" : "block"} text-slate-800 text-sm ml-3`}>Perfil</span>
           </Link>
         </div>
       </nav>
@@ -118,7 +118,7 @@ export function SidebarItem(props: SidebarItemProps) {
       )}
       {!expanded && (
         <div
-          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-gray-200 text-slate-700 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 border-l-4 border-slate-700`}
+          className={`absolute left-full rounded-sm rounded-tl-none rounded-bl-none px-2 py-1 ml-6 bg-gray-200 text-slate-700 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 border-l-4 border-slate-700`}
         >
           {props.text}
         </div>

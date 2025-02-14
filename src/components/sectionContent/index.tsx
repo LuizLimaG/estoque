@@ -8,7 +8,7 @@ export function SectionContent({
     title
 } : {
     children: React.ReactNode,
-    title: string
+    title?: string
 }) {
     const [isOpen, setIsOpen] = useState(false)
 
