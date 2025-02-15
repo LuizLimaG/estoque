@@ -9,6 +9,12 @@ import {
   StackPlus,
 } from "@phosphor-icons/react/dist/ssr";
 import { AuthContextProvider } from "@/context/authProvider";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Estoque",
+  description: "Estoque louco",
+};
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,7 +29,7 @@ const inter = Inter({
 });
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -38,34 +44,34 @@ export default function RootLayout({
             color="#1E293B"
             showSpinner={false}
           ></NextTopLoader>
-          <Sidebar>
-            <SidebarItem
-              icon={<House size={24} />}
-              text={"Home"}
-              active
-              alert={false}
-              link={"/"}
-            />
-            <SidebarItem
-              icon={<Package size={24} />}
-              text={"Estoque"}
-              alert={false}
-              link={"/stock"}
-            />
-            <SidebarItem
-              icon={<StackPlus size={24} />}
-              text={"Contagem"}
-              alert={false}
-              link={"/stock/stockCount"}
-            />
-            <hr />
-            <SidebarItem
-              icon={<CrownSimple size={24} weight="fill" />}
-              text={"Administração"}
-              alert={false}
-              link={"/admin"}
-            />
-          </Sidebar>
+            <Sidebar>
+              <SidebarItem
+                icon={<House size={24} />}
+                text={"Home"}
+                active
+                alert={false}
+                link={"/"}
+              />
+              <SidebarItem
+                icon={<Package size={24} />}
+                text={"Estoque"}
+                alert={false}
+                link={"/stock"}
+              />
+              <SidebarItem
+                icon={<StackPlus size={24} />}
+                text={"Contagem"}
+                alert={false}
+                link={"/stock/stockCount"}
+              />
+              <hr />
+              <SidebarItem
+                icon={<CrownSimple size={24} weight="fill" />}
+                text={"Administração"}
+                alert={false}
+                link={"/admin"}
+              />
+            </Sidebar>
           {children}
         </AuthContextProvider>
       </body>

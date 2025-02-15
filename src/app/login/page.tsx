@@ -19,6 +19,7 @@ export default function Login() {
         throw new Error("Erro desconhecido");
       }
     } else {
+      console.log(result)
       redirect("/");
     }
   };
