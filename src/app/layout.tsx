@@ -1,10 +1,14 @@
-"use client";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Sidebar, { SidebarItem } from "@/components/sidebar";
-import { CrownSimple, House, Package, StackPlus, UserCircle } from "@phosphor-icons/react/dist/ssr";
-import { usePathname } from "next/navigation";
+import {
+  CrownSimple,
+  House,
+  Package,
+  StackPlus,
+} from "@phosphor-icons/react/dist/ssr";
+import { AuthContextProvider } from "@/context/authProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,21 +27,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const routesWithoutSidebar = ["/login"];
-  const shouldShowSidebar = !routesWithoutSidebar.includes(pathname);
-
   return (
     <html lang="pt-br">
       <body
         className={`antialiased h-screen ${poppins.variable} ${inter.variable}  bg-gray-200`}
       >
-        <NextTopLoader
-          height={5}
-          color="#1E293B"
-          showSpinner={false}
-        ></NextTopLoader>
-        {shouldShowSidebar && (
+        <AuthContextProvider>
+          <NextTopLoader
+            height={5}
+            color="#1E293B"
+            showSpinner={false}
+          ></NextTopLoader>
           <Sidebar>
             <SidebarItem
               icon={<House size={24} />}
@@ -66,8 +66,8 @@ export default function RootLayout({
               link={"/admin"}
             />
           </Sidebar>
-        )}
-        {children}
+          {children}
+        </AuthContextProvider>
       </body>
     </html>
   );
