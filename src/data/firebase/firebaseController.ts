@@ -13,6 +13,11 @@ interface ProductData {
   dataContagem: string;
 }
 
+interface UserData {
+  user: string;
+  userType: string;
+}
+
 const addProduct = async (productData: ProductData) => {
   const requiredFields = {
     nome: "Nome do produto",
@@ -56,5 +61,20 @@ const addCategory = async (categoryName: string) => {
   }
 };
 
-export { addProduct, addCategory };
+const addUser = async (userData: UserData) => {
+  if (!userData.user?.trim() || !userData.userType?.trim()) {
+    throw new Error("Usuário e tipo de usuário são obrigatórios");
+  }
+
+  try {
+    const collectionRef = collection(db, "Usuarios");
+    const docRef = await addDoc(collectionRef, userData);
+    return { success: true, id: docRef.id };
+  } catch (error) {
+    console.error("Erro ao adicionar usuário:", error);
+    throw new Error("Falha ao adicionar usuário");
+  }
+}
+
+export { addProduct, addCategory, addUser };
 export type { ProductData };

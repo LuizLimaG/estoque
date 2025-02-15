@@ -1,21 +1,30 @@
-"use client";
+"use client"
 
-import { SignUp } from "@/data/auth/signUp";
-import { redirect } from "next/navigation";
-import { useState } from "react";
+import { SignUp } from "@/data/auth/signUp"
+import { addUser } from "@/data/firebase/firebaseController"
+import { redirect } from "next/navigation"
+import { useEffect, useState } from "react"
 
 export default function RegisterCollaborator() {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("")
+  const [userType, setUserType] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleForm = async () => {
-    const { result, error } = await SignUp(`${user}@hotntender.com`, password);
+    const { result, error } = await SignUp(`${user}@hotntender.com`, password)
     if (error) {
-      throw new Error(`${error}`);
+      throw new Error(`${error}`)
     } else {
-      redirect("/admin");
+      await addUser({ user: user, userType: userType })
+
+      redirect("/admin")
     }
-  };
+  }
+
+  const usersType = [
+    'Administrador',
+    'Colaborador'
+  ]
 
   return (
     <div className="w-full h-full grid place-items-center font-poppins">
@@ -31,6 +40,26 @@ export default function RegisterCollaborator() {
 
         <section className="w-full flex flex-col gap-6 items-center">
           <div className="w-full flex flex-col gap-3">
+            <div className="w-full">
+              <div>
+                <label htmlFor="userType">Tipo do usuário</label>
+              </div>
+              <select
+                name="userType"
+                value={userType}
+                onChange={(e) => setUserType(e.target.value)}
+                className="w-full rounded-md border-[2px] border-gray-200 px-2 py-2 focus:border-slate-800 placeholder:text-gray-300 placeholder:italic outline-none"
+              >
+                <option value="" disabled>
+                  Selecione um tipo
+                </option>
+                {usersType.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="w-full">
               <div>
                 <label htmlFor="user">Usuário</label>
@@ -71,5 +100,5 @@ export default function RegisterCollaborator() {
         </section>
       </div>
     </div>
-  );
+  )
 }
