@@ -1,6 +1,9 @@
 "use client";
+import { AuthContext } from "@/context/authContext";
+import { SignOut } from "@phosphor-icons/react";
 import { SignIn, CaretLineLeft, CaretLineRight, UserCircle } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, createContext, useState, JSX } from "react";
 
 interface SidebarProps {
@@ -13,7 +16,14 @@ interface SidebarContextType {
 const SidebarContext = createContext<SidebarContextType>({ expanded: false });
 
 export default function Sidebar(props: SidebarProps) {
+  const { logout } = useContext(AuthContext);
+  const router = useRouter();
   const [expanded, setExpanded] = useState(false);
+
+  const handleLogout = async () => {
+    await logout();
+    router.push("/login");
+  };
 
   return (
     <aside className="z-50 h-screen hidden min-h-screens font-poppins fixed md:flex rounded-r-full">
@@ -69,10 +79,12 @@ export default function Sidebar(props: SidebarProps) {
         </SidebarContext.Provider>
 
         <div
-          className={`border-t flex p-3 items-center justify-evenly ${
-            !expanded && "flex-col"
-          }`}
+          className={`border-t flex p-3 items-center justify-evenly flex-col`}
         >
+          <button onClick={handleLogout} className={`mb-2 font-medium rounded-md flex items-center bg-red-200 py-2 px-3 shadow-3D ease-in-out hover:opacity-95 duration-300  ${!expanded ? "" : "w-full"}`}>
+            <SignOut size={24} className="text-slate-800" />
+            <span className={`${!expanded ? "hidden" : "block"} text-slate-800 text-sm ml-3`}>Sair</span>
+          </button>
           <Link className={`font-medium rounded-md flex items-center bg-gray-200 py-2 px-3 shadow-3D ease-in-out hover:opacity-95 duration-300  ${!expanded ? "" : "w-full"}`} href="/profile">
             <UserCircle size={24} className="text-slate-800" />
             <span className={`${!expanded ? "hidden" : "block"} text-slate-800 text-sm ml-3`}>Perfil</span>
