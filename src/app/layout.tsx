@@ -5,7 +5,7 @@ import Sidebar, { SidebarItem } from "@/components/sidebar";
 import { CrownSimple, House, Package, StackPlus } from "@phosphor-icons/react/dist/ssr";
 import { AuthContextProvider } from "@/context/authProvider";
 import { Metadata } from "next";
-import ProtectedRoute from "@/components/ProtectedRoute"; // Criamos esse componente no próximo passo
+import ProtectedRoute from "@/components/ProtectedRoute"; 
 
 export const metadata: Metadata = {
   title: "Estoque",
