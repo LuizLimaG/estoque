@@ -12,7 +12,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <div className="flex min-h-screen">
       {showSidebar && (
         <Sidebar>
-          <SidebarItem icon={<House size={24} />} text="Home" active link="/" />
+          <SidebarItem icon={<House size={24} />} text="Home" link="/" />
           <SidebarItem icon={<Package size={24} />} text="Estoque" link="/stock" />
           <SidebarItem icon={<StackPlus size={24} />} text="Contagem" link="/stock/stockCount" />
           <hr />

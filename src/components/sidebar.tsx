@@ -3,7 +3,7 @@ import { AuthContext } from "@/context/authContext";
 import { SignOut } from "@phosphor-icons/react";
 import { SignIn, CaretLineLeft, CaretLineRight, UserCircle } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useContext, createContext, useState, JSX } from "react";
 
 interface SidebarProps {
@@ -97,18 +97,19 @@ export default function Sidebar(props: SidebarProps) {
 interface SidebarItemProps {
   icon: JSX.Element;
   text: string;
-  active?: boolean;
   alert?: boolean;
   link: string;
 }
 
 export function SidebarItem(props: SidebarItemProps) {
   const { expanded } = useContext(SidebarContext);
+  const pathname = usePathname(); 
+  const isActive = pathname === props.link;
   return (
     <Link
       href={props.link}
       className={`relative flex items-center py-2 px-3 my-2 font-medium rounded-md cursor-pointer transition-colors group ${
-        props.active ? "bg-gray-200" : "hover:bg-gray-50 text-grey-600"
+        isActive ? "bg-gray-200" : "hover:bg-gray-50 text-grey-600"
       }
         ${expanded && "py-2"}
         `}
