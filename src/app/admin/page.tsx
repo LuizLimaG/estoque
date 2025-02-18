@@ -8,8 +8,8 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 interface Users {
-  id: string
   user: string
+  id: string
   userType: string
 }
 
@@ -32,6 +32,8 @@ export default function AdminPage() {
     });
   })
 
+  const sortedUsers = users.sort((a, b) => a.user.localeCompare(b.user))
+
   return (
     <Content>
       <SectionHeader
@@ -41,7 +43,7 @@ export default function AdminPage() {
         primaryLink="/admin/registerCollaborator"
       />
       <section className="w-full bg-white rounded-lg overflow-hidden">
-        {users.map((user) => (
+        {sortedUsers.map((user) => (
           <UserInfoCard key={user.id} title={user.user} type={user.userType}/>
         ))}
       </section>

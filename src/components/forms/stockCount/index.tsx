@@ -119,13 +119,13 @@ export function StockCountForm() {
     {
       name: "dataContagem",
       type: "date",
-      placeholder: "Digite a data da contagem:",
+      placeholder: "Selecione a data da contagem:",
       inputValue: formData.dataContagem,
     },
   ];
 
   return (
-    <div className="w-2/6 flex flex-col items-center gap-2 py-8 mx-auto">
+    <div className="w-full md:w-2/6 flex flex-col items-center gap-2 md:py-8 mx-auto">
       <div className="w-full h-full flex flex-col items-center justify-center p-4 gap-5">
         <div className="flex flex-wrap items-center justify-center gap-4">
           {inputItems.map((item, index) => (

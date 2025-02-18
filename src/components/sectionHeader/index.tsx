@@ -19,9 +19,9 @@ export function SectionHeader({
   return (
     <section className="w-full flex items-center justify-between p-4 rounded-lg bg-white">
       <div>
-        <h1 className="font-black text-[30px] text-slate-800">{pageTitle}</h1>
+        <h1 className="font-black text-[21px] md:text-[30px] text-slate-800">{pageTitle}</h1>
       </div>
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-3">
         {link && secundaryButton && (
           <Link
             href={link}
@@ -32,7 +32,7 @@ export function SectionHeader({
         )}
         <Link
           href={primaryLink}
-          className="flex items-center justify-center gap-2 text-white bg-slate-800 px-2 py-1 rounded-lg hover:bg-slate-700 transition-all duration-200"
+          className="flex items-center justify-center gap-2 text-[13px] md:text-[18px] text-white bg-slate-800 px-2 py-1 rounded-lg hover:bg-slate-700 transition-all duration-200"
         >
           {icon}
           {primaryButton}

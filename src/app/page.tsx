@@ -7,7 +7,7 @@ export default function Home() {
     <Content>
       <SectionHeader
         pageTitle="Página Inicial"
-        icon={<Stack size={20} weight="fill" />}
+        icon={<Stack weight="fill" className="text-[15px] md:text-[20px]" />}
         primaryButton={"Ver Estoque"}
         primaryLink={"/stock"}
       />

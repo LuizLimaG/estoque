@@ -16,15 +16,15 @@ export function SectionContent({
         <section className="w-full bg-white rounded-lg overflow-hidden">
             <button 
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full p-6 bg-gray-50 flex items-center justify-between hover:bg-gray-100 transition-colors duration-200"
+                className="w-full p-3 md:p-6 bg-gray-50 flex items-center justify-between hover:bg-gray-100 transition-colors duration-200"
             >
-                <h1 className="font-bold text-[23px] text-slate-800">
+                <h1 className="font-bold text-[18px] md:text-[23px] text-slate-800">
                     {title}
                 </h1>
                 <div className={`transform transition-transform duration-200 ${
                     isOpen ? 'rotate-180' : 'rotate-0'
                 }`}>
-                    <CaretDown size={20} weight="bold"/>
+                    <CaretDown weight="bold" className="text-[15px] md:text-[20px]"/>
                 </div>
             </button>
             <div 

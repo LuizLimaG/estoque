@@ -27,9 +27,9 @@ export function RegisterCategory() {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 gap-5">
+    <div className="w-full h-full flex flex-col md:flex-row items-center justify-center p-4 gap-5">
       <input
-        className="border-2 border-gray-200 shadow-inputShadow p-2 w-[400px] rounded-sm focus:border-slate-700 outline-none"
+        className=" w-full md:w-[400px] border-2 border-gray-200 shadow-inputShadow p-2 rounded-sm focus:border-slate-700 outline-none"
         name="registerCategory"
         placeholder="Registrar Categoria"
         autoComplete="off"

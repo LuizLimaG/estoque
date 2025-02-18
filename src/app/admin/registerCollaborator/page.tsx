@@ -1,30 +1,33 @@
-"use client"
+"use client";
 
-import { SignUp } from "@/data/auth/signUp"
-import { addUser } from "@/data/firebase/firebaseController"
-import { redirect } from "next/navigation"
-import { useEffect, useState } from "react"
+import { SignUp } from "@/data/auth/signUp";
+import { addUser } from "@/data/firebase/firebaseController";
+import { SpinnerGap } from "@phosphor-icons/react/dist/ssr";
+import { redirect } from "next/navigation";
+import { useState } from "react";
 
 export default function RegisterCollaborator() {
-  const [user, setUser] = useState("")
-  const [userType, setUserType] = useState("")
-  const [password, setPassword] = useState("")
+  const [user, setUser] = useState("");
+  const [userType, setUserType] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleForm = async () => {
-    const { result, error } = await SignUp(`${user}@hotntender.com`, password)
+    setLoading(true);
+    const { result, error } = await SignUp(`${user}@hotntender.com`, password);
     if (error) {
-      throw new Error(`${error}`)
+      throw new Error(`${error}`);
     } else {
-      await addUser({ user: user, userType: userType })
-
+      try {
+        await addUser({ user: user, userType: userType });
+      } catch (error) {
+        throw new Error(`${error}`);
+      }
       redirect("/admin")
     }
-  }
+  };
 
-  const usersType = [
-    'Administrador',
-    'Colaborador'
-  ]
+  const usersType = ["Administrador", "Colaborador"];
 
   return (
     <div className="w-full h-full grid place-items-center font-poppins">
@@ -92,13 +95,19 @@ export default function RegisterCollaborator() {
           <div className="w-full px-2">
             <button
               onClick={handleForm}
-              className="block w-full bg-slate-800 text-white font-medium rounded-md py-2 hover:bg-slate-700 transition-all duration-200"
+              className={`block w-full bg-slate-800 text-white font-medium rounded-md py-2 hover:bg-slate-700 transition-all duration-200
+                ${loading ? "cursor-not-allowed opacity-50" : ''}`}
+                disabled={loading}
             >
-              Logar
+              {loading ? (
+                <SpinnerGap size={24} className="animate-spin mx-auto" />
+              ) : (
+                "Cadastrar"
+              )}
             </button>
           </div>
         </section>
       </div>
     </div>
-  )
+  );
 }
