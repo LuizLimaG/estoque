@@ -9,7 +9,6 @@ export function TableHeaderLine() {
         "Medida",
         "Estoque Mínimo",
         "Estoque Máximo",
-        "Compras",
         "Data da Contagem"
     ]
     

@@ -111,12 +111,6 @@ export function StockCountForm() {
       inputValue: formData.estoqueMaximo,
     },
     {
-      name: "compras",
-      type: "text",
-      placeholder: "Digite a quantidade de compras:",
-      inputValue: formData.compras,
-    },
-    {
       name: "dataContagem",
       type: "date",
       placeholder: "Selecione a data da contagem:",

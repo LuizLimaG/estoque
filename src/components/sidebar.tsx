@@ -85,10 +85,6 @@ export default function Sidebar(props: SidebarProps) {
             <SignOut size={24} className="text-slate-800" />
             <span className={`${!expanded ? "hidden" : "block"} text-slate-800 text-sm ml-3`}>Sair</span>
           </button>
-          <Link className={`font-medium rounded-md flex items-center bg-gray-200 py-2 px-3 shadow-3D ease-in-out hover:opacity-95 duration-300  ${!expanded ? "" : "w-full"}`} href="/profile">
-            <UserCircle size={24} className="text-slate-800" />
-            <span className={`${!expanded ? "hidden" : "block"} text-slate-800 text-sm ml-3`}>Perfil</span>
-          </Link>
         </div>
       </nav>
     </aside>

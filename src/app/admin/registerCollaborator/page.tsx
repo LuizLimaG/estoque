@@ -1,33 +1,36 @@
-"use client";
+"use client"
 
-import { SignUp } from "@/data/auth/signUp";
-import { addUser } from "@/data/firebase/firebaseController";
-import { SpinnerGap } from "@phosphor-icons/react/dist/ssr";
-import { redirect } from "next/navigation";
-import { useState } from "react";
+import { SignUp } from "@/data/auth/signUp"
+import { addUser } from "@/data/firebase/firebaseController"
+import { SpinnerGap } from "@phosphor-icons/react/dist/ssr"
+import { redirect } from "next/navigation"
+import { useState } from "react"
 
 export default function RegisterCollaborator() {
-  const [user, setUser] = useState("");
-  const [userType, setUserType] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState("")
+  const [userType, setUserType] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const handleForm = async () => {
-    setLoading(true);
-    const { result, error } = await SignUp(`${user}@hotntender.com`, password);
+    setLoading(true)
+    const { result, error } = await SignUp(`${user}@hotntender.com`, password)
     if (error) {
-      throw new Error(`${error}`);
+      setError('Preencha todos os campos.')
+      setLoading(false)
     } else {
       try {
-        await addUser({ user: user, userType: userType });
+        await addUser({ user: user, userType: userType })
       } catch (error) {
-        throw new Error(`${error}`);
+        setError(`${error}`)
+        setLoading(false)
       }
       redirect("/admin")
     }
-  };
+  }
 
-  const usersType = ["Administrador", "Colaborador"];
+  const usersType = ["Administrador", "Colaborador"]
 
   return (
     <div className="w-full h-full grid place-items-center font-poppins">
@@ -49,6 +52,7 @@ export default function RegisterCollaborator() {
               </div>
               <select
                 name="userType"
+                required
                 value={userType}
                 onChange={(e) => setUserType(e.target.value)}
                 className="w-full rounded-md border-[2px] border-gray-200 px-2 py-2 focus:border-slate-800 placeholder:text-gray-300 placeholder:italic outline-none"
@@ -72,6 +76,7 @@ export default function RegisterCollaborator() {
                 placeholder="Usuário"
                 className="w-full rounded-md border-[2px] border-gray-200 px-2 py-2 focus:border-slate-800 placeholder:text-gray-300 placeholder:italic outline-none"
                 name="user"
+                required
                 autoComplete="off"
                 value={user}
                 onChange={(e) => setUser(e.target.value)}
@@ -86,18 +91,24 @@ export default function RegisterCollaborator() {
                 placeholder="Senha"
                 className="w-full rounded-md border-[2px] border-gray-200 px-2 py-2 focus:border-slate-800 placeholder:text-gray-300 placeholder:italic outline-none"
                 name="password"
+                required
                 autoComplete="off"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
+          {error && (
+            <div className="bg-red-200 p-4 rounded-md">
+              <h1 className="text-red-600 font-bold">{error}</h1>
+            </div>
+          )}
           <div className="w-full px-2">
             <button
               onClick={handleForm}
               className={`block w-full bg-slate-800 text-white font-medium rounded-md py-2 hover:bg-slate-700 transition-all duration-200
-                ${loading ? "cursor-not-allowed opacity-50" : ''}`}
-                disabled={loading}
+                ${loading ? "cursor-not-allowed opacity-50" : ""}`}
+              disabled={loading}
             >
               {loading ? (
                 <SpinnerGap size={24} className="animate-spin mx-auto" />
@@ -109,5 +120,5 @@ export default function RegisterCollaborator() {
         </section>
       </div>
     </div>
-  );
+  )
 }

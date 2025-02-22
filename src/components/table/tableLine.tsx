@@ -42,11 +42,6 @@ export function TableLine() {
           <TableColumnContent content={product.medida} />
           <TableColumnContent content={product.estoqueMinimo} />
           <TableColumnContent content={product.estoqueMaximo} />
-          <TableColumnContent
-            content={
-              product.quantidade < product.estoqueMinimo ? "Necessária" : "OK"
-            }
-          />
           <TableColumnContent content={product.dataContagem} />
         </tr>
       ))}

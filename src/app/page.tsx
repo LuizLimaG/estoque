@@ -10,6 +10,8 @@ export default function Home() {
         icon={<Stack weight="fill" className="text-[15px] md:text-[20px]" />}
         primaryButton={"Ver Estoque"}
         primaryLink={"/stock"}
+        secundaryButton={"Realizar Contagem"}
+        link={"/stock/stockCount"}
       />
     </Content>
   );

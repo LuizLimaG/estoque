@@ -1,13 +1,6 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import Sidebar, { SidebarItem } from "@/components/sidebar";
-import {
-  CrownSimple,
-  House,
-  Package,
-  StackPlus,
-} from "@phosphor-icons/react/dist/ssr";
 import { AuthContextProvider } from "@/context/authProvider";
 import { Metadata } from "next";
 import ProtectedRoute from "@/components/ProtectedRoute";
