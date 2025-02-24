@@ -3,14 +3,13 @@ import { addDoc, collection, doc } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 
 interface ProductData {
-  nome: string;
-  categoria: string;
-  quantidade: string;
-  medida: string;
-  estoqueMinimo: string;
-  estoqueMaximo: string;
-  compras: string;
-  dataContagem: string;
+  productName: string;
+  category: string;
+  quantity: string;
+  measure: string;
+  minimumStock: string;
+  maximumStock: string;
+  countDate: string;
 }
 
 interface UserData {
@@ -20,14 +19,13 @@ interface UserData {
 
 const addProduct = async (productData: ProductData) => {
   const requiredFields = {
-    nome: "Nome do produto",
-    categoria: "Categoria do produto",
-    quantidade: "Quantidade do produto",
-    medida: "Unidade de medida",
-    estoqueMinimo: "Estoque mínimo",
-    estoqueMaximo: "Estoque máximo",
-    compras: "Compras",
-    dataContagem: "Data da contagem",
+    productName: "Nome do produto",
+    category: "Categoria do produto",
+    quantity: "Quantidade do produto",
+    measure: "Unidade de medida",
+    minimumStock: "Estoque mínimo",
+    maximumStock: "Estoque máximo",
+    countDate: "Data da contagem",
   }
 
   for (const [key, label] of Object.entries(requiredFields)) {
@@ -37,7 +35,7 @@ const addProduct = async (productData: ProductData) => {
   }
 
   try {
-    const collectionRef = collection(db, "Produtos");
+    const collectionRef = collection(db, "Stock");
     const docRef = await addDoc(collectionRef, productData);
     return { success: true, id: docRef.id };
   } catch (error) {
@@ -52,7 +50,7 @@ const addCategory = async (categoryName: string) => {
   }
 
   try {
-    const collectionRef = collection(db, "ConfiguracoesProdutos");
+    const collectionRef = collection(db, "StockSettings");
     const docRef = await addDoc(collectionRef, { categoria: categoryName });
     return { success: true, id: docRef.id };
   } catch (error) {

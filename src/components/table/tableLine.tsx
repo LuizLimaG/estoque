@@ -6,20 +6,20 @@ import { useEffect, useState } from "react"
 
 interface Product {
   id: string
-  nome: string
-  categoria: string
-  quantidade: number
-  medida: string
-  estoqueMinimo: number
-  estoqueMaximo: number
-  dataContagem: string
+  productName: string
+  category: string
+  quantity: number
+  measure: string
+  minimumStock: number
+  maximumStock: number
+  countDate: string
 }
 
 export function TableLine() {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
-    const collectionRef = collection(db, "Produtos")
+    const collectionRef = collection(db, "Stock")
     const q = query(collectionRef)
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -36,13 +36,13 @@ export function TableLine() {
     <>
       {products.map((product) => (
         <tr key={product.id} className="even:bg-gray-50">
-          <TableColumnContent content={product.nome} />
-          <TableColumnContent content={product.categoria} />
-          <TableColumnContent content={product.quantidade} />
-          <TableColumnContent content={product.medida} />
-          <TableColumnContent content={product.estoqueMinimo} />
-          <TableColumnContent content={product.estoqueMaximo} />
-          <TableColumnContent content={product.dataContagem} />
+          <TableColumnContent content={product.productName} />
+          <TableColumnContent content={product.category} />
+          <TableColumnContent content={product.quantity} />
+          <TableColumnContent content={product.measure} />
+          <TableColumnContent content={product.minimumStock} />
+          <TableColumnContent content={product.maximumStock} />
+          <TableColumnContent content={product.countDate} />
         </tr>
       ))}
     </>

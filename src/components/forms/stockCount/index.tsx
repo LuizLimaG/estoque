@@ -14,14 +14,13 @@ interface ProductCategory {
 export function StockCountForm() {
 
   const initialFormState = {
-    nome: "",
-    quantidade: "",
-    medida: "",
-    estoqueMinimo: "",
-    estoqueMaximo: "",
-    compras: "",
-    dataContagem: "",
-    categoria: "",
+    productName: "",
+    quantity: "",
+    measure: "",
+    maximumStock: "",
+    minimumStock: "",
+    countDate: "",
+    category: "",
   };
 
   const [formData, setFormData] = useState<ProductData>(initialFormState);
@@ -66,13 +65,13 @@ export function StockCountForm() {
   };
 
   useEffect(() => {
-    const collectionRef = collection(db, "ConfiguracoesProdutos");
+    const collectionRef = collection(db, "StockSettings");
     const q = query(collectionRef);
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const categoriesList = snapshot.docs.map((doc) => ({
         id: doc.id,
-        categoryName: doc.data().categoria,
+        categoryName: doc.data().category,
       }));
       setCategories(categoriesList);
       return () => unsubscribe();
@@ -81,56 +80,56 @@ export function StockCountForm() {
 
   const inputItems = [
     {
-      name: "nome",
-      type: "text",
-      placeholder: "Digite o produto:",
-      inputValue: formData.nome,
-    },
-    {
-      name: "quantidade",
-      type: "text",
-      placeholder: "Digite a quantidade:",
-      inputValue: formData.quantidade,
-    },
-    {
-      name: "medida",
-      type: "text",
-      placeholder: "Digite a medida:",
-      inputValue: formData.medida,
-    },
-    {
-      name: "estoqueMinimo",
-      type: "text",
-      placeholder: "Digite o estoque mínimo:",
-      inputValue: formData.estoqueMinimo,
-    },
-    {
-      name: "estoqueMaximo",
-      type: "text",
-      placeholder: "Digite o estoque máximo:",
-      inputValue: formData.estoqueMaximo,
-    },
-    {
-      name: "dataContagem",
+      name: "countDate",
       type: "date",
       placeholder: "Selecione a data da contagem:",
-      inputValue: formData.dataContagem,
+      inputValue: formData.countDate,
+    },
+    {
+      name: "productName",
+      type: "text",
+      placeholder: "Digite o produto:",
+      inputValue: formData.productName,
+    },
+    {
+      name: "quantity",
+      type: "text",
+      placeholder: "Digite a quantidade:",
+      inputValue: formData.quantity,
+    },
+    {
+      name: "measure",
+      type: "text",
+      placeholder: "Digite a medida:",
+      inputValue: formData.measure,
+    },
+    {
+      name: "minimumStock",
+      type: "text",
+      placeholder: "Digite o estoque mínimo:",
+      inputValue: formData.minimumStock,
+    },
+    {
+      name: "maximumStock",
+      type: "text",
+      placeholder: "Digite o estoque máximo:",
+      inputValue: formData.maximumStock,
     },
   ];
 
   return (
-    <div className="w-full md:w-2/6 flex flex-col items-center gap-2 md:py-8 mx-auto">
+    <div className="w-full md:w-6/6 flex flex-col items-center gap-2 md:py-8 mx-auto">
       <div className="w-full h-full flex flex-col items-center justify-center p-4 gap-5">
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="flex flex-wrap items-center justify-start gap-4 ">
           {inputItems.map((item, index) => (
             <Input key={index} {...item} onchange={handleInputChange} />
           ))}
           <select
-            name="categoria"
-            value={formData.categoria}
+            name="category"
+            value={formData.category}
             onChange={handleInputChange}
             required
-            className="w-full border-2 border-gray-200 shadow-inputShadow p-2 rounded-sm focus:border-slate-700 outline-none"
+            className="w-[400px] border-2 border-gray-200 shadow-inputShadow p-2 rounded-sm focus:border-slate-700 outline-none"
           >
             <option value="" disabled>
               Selecione uma categoria

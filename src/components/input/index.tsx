@@ -20,7 +20,7 @@ export function Input({
       type={type}
       name={name}
       placeholder={placeholder}
-      className={`border-2 border-gray-200 shadow-inputShadow p-2 w-full rounded-sm focus:border-slate-700 outline-none ${classe}`}
+      className={`w-[400px] border-2 border-gray-200 shadow-inputShadow p-2 rounded-sm focus:border-slate-700 outline-none ${classe}`}
       id={name}
       autoComplete="off"
       value={inputValue}
