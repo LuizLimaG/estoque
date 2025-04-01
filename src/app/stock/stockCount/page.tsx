@@ -24,6 +24,10 @@ export default function StockCount() {
       <SectionContent title="Categoria">
         <RegisterCategory />
       </SectionContent>
+
+      <SectionContent title="Produtos">
+        <div></div>
+      </SectionContent>
     </Content>
   );
 }

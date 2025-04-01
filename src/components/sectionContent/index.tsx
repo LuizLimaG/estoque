@@ -5,12 +5,14 @@ import { useState } from "react"
 
 export function SectionContent({
     children,
-    title
+    title,
+    opened
 } : {
     children: React.ReactNode,
-    title?: string
+    title?: string,
+    opened?: boolean
 }) {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false || opened)
 
     return (
         <section className="w-full bg-white rounded-lg overflow-hidden">

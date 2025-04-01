@@ -3,6 +3,7 @@
 import { useContext, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { AuthContext } from "@/context/authContext";
+import { LoadingComponent } from "./loading";
 
 export default function ProtectedRoute({
   children,
@@ -23,9 +24,7 @@ export default function ProtectedRoute({
 
   if (userAuth === undefined) {
     return (
-      <div className="w-full flex items-center justify-center bg-gray-200">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-r-slate-800 border-gray-400" />
-      </div>
+      <LoadingComponent/>
     );
   }
 

@@ -6,11 +6,11 @@ const firebaseErrors: Record<FirebaseErrorCode, FirebaseErrorMessage> = {
     action: "Por favor, verifique o formato do e-mail e tente novamente.",
   },
   [FirebaseErrorCode.MISSING_PASSWORD]: {
-    message: "O campo de senha não pode ser vazio",
+    message: "A senha é inválida",
     action: "Por favor, digite a senha."
   },
   [FirebaseErrorCode.WRONG_PASSWORD]: {
-    message: "Senha incorreta.",
+    message: "Email ou senha incorretos.",
     action: "Por favor, verifique sua senha e tente novamente.",
   },
   [FirebaseErrorCode.USER_NOT_FOUND]: {

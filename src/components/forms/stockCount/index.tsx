@@ -146,7 +146,7 @@ export function StockCountForm() {
             {error}
           </div>
         )}
-        <div>
+        <div className="flex items-center gap-3">
           <button
             className={`font-medium text-white text-[15px] px-16 bg-slate-800 rounded-md py-2 hover:bg-slate-700 transition-all duration-200
               ${isLoading ? "cursor-not-allowed opacity-50 px-20" : ""}`}
@@ -158,6 +158,10 @@ export function StockCountForm() {
             ) : (
               "Registrar"
             )}
+          </button>
+
+          <button className="font-medium text-[15px] text-slate-900 hover:underline px-4 py-2">
+            Adicionar Produto
           </button>
         </div>
       </div>

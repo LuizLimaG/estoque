@@ -51,7 +51,7 @@ const addCategory = async (categoryName: string) => {
 
   try {
     const collectionRef = collection(db, "StockSettings");
-    const docRef = await addDoc(collectionRef, { categoria: categoryName });
+    const docRef = await addDoc(collectionRef, { category: categoryName });
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error("Erro ao adicionar categoria:", error);
